@@ -73,7 +73,7 @@ const setOnClickListener = function setOnClickListener() {
                 }
             })
             item_array[i][j].$item.contextmenu(function(e) {
-                if(item_array[i][j].isOpen === false) {
+                if(item_array[i][j].isOpen === false && isGame === true) {
                     $(this).addClass("game-field__flag-item");
                 }
             })
