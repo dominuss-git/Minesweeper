@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
+
+$text : #ffffff;
+$box : #202225;
+$shadow : rgba(0,0,0,0.5);
+$active-item : #36393F;
+$item : #40444B;
+
+* {
+    margin: 0;
+    background-color: $active-item;
+    font-family: 'Architects Daughter', cursive;
+}
+
+.shadow-box {
+    box-shadow: 0 0 20px $shadow;
+    background-color: $box;
+}
+
+.shadow-text {
+    text-shadow: 0 0 7px $text ;
+    color: $text ;
+}
+
+.header {
+    &__logo {
+        height: 90px;
+        margin: 10px;
+        text-align: center;
+    }
+    &__text {
+        background-color: $box;
+        font-size: 55px;
+        margin: 40px 0 0 0;
+    }
+}
+
+.game-field {
+    padding: 10px;
+    margin: 10px;
+    border-radius: 3px;
+    &__game-item {
+        height: 20px;
+        width: 20px;
+        background-color: $item;
+    }
+    &__bomb-item {
+        background-color: $active-item;
+        background-image: url("/src/img/bomb.svg");
+        background-size: 18px;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    &__active-item {
+        background-color: $active-item;
+        font-size: 14px;
+        text-align: center;
+        color: $text;
+    }
+    &__flag-item {
+        background-color: $active-item;
+        background-image: url("/src/img/flag.svg");
+        background-size: 18px;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+}
+
+.body {
+   height: 100%;
+}
+
+.button {
+    width: 100px;
+    height: 100px;
+    background-color: $text;
+}
