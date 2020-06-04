@@ -1,5 +1,5 @@
-import $ from 'jquery'
-import './css/style.css'
+// import $ from 'jquery'
+// import './css/style.css'
 
 const item_class = 'game-field__game-item';
 const item = `<td class=${item_class}></td>`;
