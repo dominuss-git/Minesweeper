@@ -46,7 +46,7 @@ $item : #40444B;
     }
     &__bomb-item {
         background-color: $active-item;
-        background-image: url("/img/bomb.svg");
+        background-image: url("../../img/bomb.svg");
         background-size: 18px;
         background-repeat: no-repeat;
         background-position: center;
@@ -59,7 +59,7 @@ $item : #40444B;
     }
     &__flag-item {
         background-color: $active-item;
-        background-image: url("/img/flag.svg");
+        background-image: url("../../img/flag.svg");
         background-size: 18px;
         background-repeat: no-repeat;
         background-position: center;
