@@ -37,7 +37,7 @@
 }
 .game-field__bomb-item {
   background-color: #36393F;
-  background-image: url("/img/bomb.svg");
+  background-image: url("/img/bomb.png");
   background-size: 18px;
   background-repeat: no-repeat;
   background-position: center;
@@ -50,7 +50,7 @@
 }
 .game-field__flag-item {
   background-color: #36393F;
-  background-image: url("/img/flag.svg");
+  background-image: url("/img/flag.png");
   background-size: 18px;
   background-repeat: no-repeat;
   background-position: center;
