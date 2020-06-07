@@ -7,6 +7,7 @@
 .shadow-box {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
   background-color: #202225;
+  border-radius: 3px;
 }
 
 .shadow-text {
@@ -25,10 +26,33 @@
   margin: 40px 0 0 0;
 }
 
+.main {
+  display: flex;
+  flex-direction: row;
+}
+
+.button-box {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0 0 30%;
+  color: #ffffff;
+  text-align: center;
+  font-size: 20px;
+}
+.button-box__game-button {
+  width: 100px;
+  height: 30px;
+  color: #ffffff;
+  margin: 10px;
+}
+.button-box__game-button:hover {
+  box-shadow: 0 0 20px #000000;
+}
+
 .game-field {
   padding: 10px;
-  margin: 10px;
-  border-radius: 3px;
+  margin: 20px;
 }
 .game-field__game-item {
   height: 20px;
@@ -37,7 +61,9 @@
 }
 .game-field__bomb-item {
   background-color: #36393F;
-  background-image: url("../img/bomb.png");
+  width: 16px;
+  height: 16px;
+  background-image: url("/img/bomb.svg");
   background-size: 18px;
   background-repeat: no-repeat;
   background-position: center;
@@ -50,20 +76,70 @@
 }
 .game-field__flag-item {
   background-color: #36393F;
-  background-image: url("../img/flag.png");
+  background-image: url("/img/flag.svg");
   background-size: 18px;
   background-repeat: no-repeat;
   background-position: center;
 }
 
-.body {
-  height: 100%;
+.end-game {
+  position: relative;
+  top: -200px;
+  left: -30%;
+  width: 90%;
+  margin: 0 0 0 35%;
+  padding: 10px;
+  color: #ffffff;
+  text-align: center;
+  font-size: 20px;
 }
 
-.button {
-  width: 100px;
-  height: 100px;
-  background-color: #ffffff;
+@media (max-width: 840px) {
+  .button-box {
+    margin: 10px 0 0 15%;
+  }
+}
+@media (max-width: 700px) {
+  .button-box {
+    display: none;
+  }
+
+  .game-field {
+    align-self: flex-end;
+    padding: 5px;
+    margin: 15px;
+  }
+  .game-field__game-item {
+    height: 15px;
+    width: 15px;
+  }
+  .game-field__bomb-item {
+    background-color: #36393F;
+    width: 11px;
+    height: 11px;
+    background-image: url("/img/bomb.svg");
+    background-size: 13px;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  .game-field__active-item {
+    background-color: #36393F;
+    font-size: 10px;
+    text-align: center;
+    color: #ffffff;
+  }
+  .game-field__flag-item {
+    background-color: #36393F;
+    background-image: url("/img/flag.svg");
+    background-size: 13px;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .header__text {
+    font-size: 40px;
+    margin: 0 0 -100px 0;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
