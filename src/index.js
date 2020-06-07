@@ -152,17 +152,24 @@ const Generate = function Generate(quantity, n ,m) {
 }
 
 const StopGame = function StopGame(mode) {
-    isGame = false;
     if(mode === true) {
         $(".body").append(`<div class="end-game shadow-box cyrcle">You won</div>`);
     } else {
         $(".body").append(`<div class="end-game shadow-box cyrcle">You loss</div>`);
+        for(let i=0; i<size; i++) {
+            for(let j=0; j<size; j++) {
+                if(item_array[i][j].isBomb === true) {
+                    item_array[i][j].$item.addClass("game-field__bomb-item");
+                    console.log(i)
+                }
+            }
+        }
+        $(".end-game").click(function() {
+            $('#medium').click();
+            $(this).detach();
+        });
     }
-    $(".end-game").click(function() {
-        $('#medium').click();
-        $(this).detach();
-    });
-    
+    isGame = false;
 }
 
 const Check = function Check(i, j) {

@@ -57,6 +57,7 @@ $item : #40444B;
     }
     &__game-button:hover {
         box-shadow: 0 0 20px $active-shadow;
+        text-shadow: 0 0 7px $text;
     }
 }
 
@@ -117,7 +118,7 @@ $item : #40444B;
     .game-field {
         align-self: flex-end;
         padding: 5px;
-        margin: 15px;
+        margin: auto;
         &__game-item {
             height: 15px;
             width: 15px;   
@@ -144,6 +145,10 @@ $item : #40444B;
             background-repeat: no-repeat;
             background-position: center;
         }
+    }
+    .end-game {
+        width: 80%;
+        left: -28%;
     }
     .header {
         &__text {

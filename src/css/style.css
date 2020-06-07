@@ -48,6 +48,7 @@
 }
 .button-box__game-button:hover {
   box-shadow: 0 0 20px #000000;
+  text-shadow: 0 0 7px #ffffff;
 }
 
 .game-field {
@@ -107,7 +108,7 @@
   .game-field {
     align-self: flex-end;
     padding: 5px;
-    margin: 15px;
+    margin: auto;
   }
   .game-field__game-item {
     height: 15px;
@@ -134,6 +135,11 @@
     background-size: 13px;
     background-repeat: no-repeat;
     background-position: center;
+  }
+
+  .end-game {
+    width: 80%;
+    left: -28%;
   }
 
   .header__text {
