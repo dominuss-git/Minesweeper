@@ -204,7 +204,7 @@ const updateTimer = () => {
         if($("#minut").text() === "00") {
             $("#minut").text(1);
         } else {
-            $("#minut").text($("#minut").text()+1);
+            $("#minut").text(Number($("#minut").text())+1);
         }
     }
     if($("#minut").text() === 60) {
@@ -212,7 +212,7 @@ const updateTimer = () => {
         if($("#hour").text() == "00") {
             $("#hour").text(1);
         } else {
-            $("#hour").text($("#hour").text()+1);
+            $("#hour").text(Number($("#hour").text())+1);
         }
     }
     if(isTimer === false) {
