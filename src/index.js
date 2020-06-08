@@ -5,11 +5,14 @@ const item_class = 'game-field__game-item';
 const item = `<td class=${item_class}></td>`;
 const row = `<tr></tr>`;
 let item_array;
+let timeOut = 0;
+let timer;
 let size = 0;
 let bomb = 0;
 let items = 0;
 let isGame = false;
 let isGenerate = false;
+let isTimer = false;
 
 $(window).ready(function(e) {
     $('#medium').click();
@@ -41,6 +44,8 @@ const start = () => {
     $('.game-field').empty();
     isGame = true;
     isGenerate = false;
+    isTimer = false;
+    timeOut = 0;
 
     for(let i = 0; i < size; i+=1) { $('.game-field').append(row); }
     for(let i = 0; i < size; i+=1) { $('tr').append(item); }
@@ -87,6 +92,10 @@ const setOnClickListener = () => {
                     }
                     if(items === bomb) {
                         stopGame(true);
+                    }
+                    if(isTimer === false) {
+                        isTimer = true;
+                        timer = setInterval(updateTimer, 1000);
                     }
                 } 
             })
@@ -151,9 +160,13 @@ const stopGame = (mode) => {
         $(".end-game").click(function() {
             $('#medium').click();
             $(this).detach();
+            $('#hour').text("00");
+            $('#minut').text("00");
+            $('#second').text("00");
         });
     }
     isGame = false;
+    isTimer = false;
 }
 
 const check = (i, j) => {
@@ -176,4 +189,21 @@ const check = (i, j) => {
         }
     }
     catch {}
+}
+
+const updateTimer = () => {
+    timeOut++;
+    console.log(timeOut)
+    $("#second").text(timeOut);
+    if(timeOut === 60) {
+        timeOut = 0;
+        $("#minut").text($("#minut").text()+1);
+    }
+    if($("#minut").text() === 60) {
+        $("#minut").text("00");
+        $("#hour").text($("#hour").text()+1);
+    }
+    if(isTimer === false) {
+        clearInterval(timer);
+    }
 }
