@@ -93,11 +93,11 @@ const setOnClickListener = () => {
                     if(items === bomb) {
                         stopGame(true);
                     }
-                    if(isTimer === false) {
-                        isTimer = true;
-                        timer = setInterval(updateTimer, 1000);
-                    }
                 } 
+                if(isTimer === false) {
+                    isTimer = true;
+                    timer = setInterval(updateTimer, 1000);
+                }
             })
             item_array[i][j].$item.contextmenu(function(e) {
                 if(item_array[i][j].isOpen === false && isGame === true) {
@@ -108,6 +108,10 @@ const setOnClickListener = () => {
                         $(this).removeClass("game-field__flag-item");
                         item_array[i][j].isFlag = false;
                     }
+                }
+                if(isTimer === false) {
+                    isTimer = true;
+                    timer = setInterval(updateTimer, 1000);
                 }
             })
         }
