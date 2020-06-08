@@ -173,22 +173,22 @@ const check = (i, j) => {
     i-=1;
     j-=1;
 
-    try {
         for(let n = i; n<i+3; n++) {
             for(let m = j; m<j+3; m++) {
-                if(item_array[n][m].num === 0 && item_array[n][m].isOpen === false
-                                              && item_array[n][m].isBomb === false) {
-                    item_array[n][m].$item.click();
-                } else if(item_array[n][m].isOpen === false && item_array[n][m].isBomb === false) {
-                    item_array[n][m].$item.html(item_array[n][m].num);
-                    items-=1;
-                    item_array[n][m].$item.addClass("game-field__active-item");
-                    item_array[n][m].isOpen = true;
+                try {
+                    if(item_array[n][m].num === 0 && item_array[n][m].isOpen === false
+                                                  && item_array[n][m].isBomb === false) {
+                        item_array[n][m].$item.click();
+                    } else if(item_array[n][m].isOpen === false && item_array[n][m].isBomb === false) {
+                        item_array[n][m].$item.html(item_array[n][m].num);
+                        items-=1;
+                        item_array[n][m].$item.addClass("game-field__active-item");
+                        item_array[n][m].isOpen = true;
+                    }
                 }
+                catch {}
             }
         }
-    }
-    catch {}
 }
 
 const updateTimer = () => {
