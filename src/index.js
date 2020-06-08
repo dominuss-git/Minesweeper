@@ -197,11 +197,19 @@ const updateTimer = () => {
     $("#second").text(timeOut);
     if(timeOut === 60) {
         timeOut = 0;
-        $("#minut").text($("#minut").text()+1);
+        if($("#minut").text() === "00") {
+            $("#minut").text(1);
+        } else {
+            $("#minut").text($("#minut").text()+1);
+        }
     }
     if($("#minut").text() === 60) {
         $("#minut").text("00");
-        $("#hour").text($("#hour").text()+1);
+        if($("#hour").text() == "00") {
+            $("#hour").text(1);
+        } else {
+            $("#hour").text($("#hour").text()+1);
+        }
     }
     if(isTimer === false) {
         clearInterval(timer);

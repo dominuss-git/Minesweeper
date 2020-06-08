@@ -59,6 +59,12 @@ $item : #40444B;
         box-shadow: 0 0 20px $active-shadow;
         text-shadow: 0 0 7px $text;
     }
+    &__timer {
+        background-color: $box;
+    }
+    &__timer-field {
+        background-color: $box;
+    }
 }
 
 .game-field {

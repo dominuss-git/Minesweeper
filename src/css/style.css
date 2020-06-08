@@ -50,6 +50,12 @@
   box-shadow: 0 0 20px #000000;
   text-shadow: 0 0 7px #ffffff;
 }
+.button-box__timer {
+  background-color: #202225;
+}
+.button-box__timer-field {
+  background-color: #202225;
+}
 
 .game-field {
   padding: 10px;
