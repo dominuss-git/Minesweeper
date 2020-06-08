@@ -114,30 +114,14 @@ const generate = (quantity, n ,m) => {
                                                                    && i !== n && j !== m) {
                     item_array[i][j].isBomb = true;
                     quantity -= 1;
-                    try {
-                        item_array[i+1][j].num += 1;
-                    } catch { }
-                    try {
-                        item_array[i+1][j+1].num += 1;
-                    } catch { }
-                    try {
-                        item_array[i+1][j-1].num += 1;
-                    } catch { }
-                    try {
-                        item_array[i-1][j].num += 1;
-                    } catch { }
-                    try {
-                        item_array[i-1][j+1].num += 1;
-                    } catch { }
-                    try {
-                        item_array[i-1][j-1].num += 1;
-                    } catch { }
-                    try {
-                        item_array[i][j+1].num += 1;
-                    } catch { }
-                    try {
-                        item_array[i][j-1].num += 1;
-                    } catch { }
+
+                    for(let k=i-1; k<i+2; k++) {
+                        for(let g=j-1; g<j+2; g++) {
+                            try {
+                                item_array[k][g].num += 1;
+                            } catch { }
+                        }
+                    }
                     if(quantity === 0) {
                         return;
                     }
@@ -173,92 +157,23 @@ const stopGame = (mode) => {
 }
 
 const check = (i, j) => {
+    i-=1;
+    j-=1;
+
     try {
-        if(item_array[i+1][j].num === 0 && item_array[i+1][j].isOpen === false
-                                        && item_array[i+1][j].isBomb === false) {
-            item_array[i+1][j].$item.click();
-        } else if(item_array[i+1][j].isOpen === false && item_array[i+1][j].isBomb === false) {
-            item_array[i+1][j].$item.html(item_array[i+1][j].num);
-            items-=1;
-            item_array[i+1][j].$item.addClass("game-field__active-item");
-            item_array[i+1][j].isOpen = true;
+        for(let n = i; n<i+3; n++) {
+            for(let m = j; m<j+3; m++) {
+                if(item_array[n][m].num === 0 && item_array[n][m].isOpen === false
+                                              && item_array[n][m].isBomb === false) {
+                    item_array[n][m].$item.click();
+                } else if(item_array[n][m].isOpen === false && item_array[n][m].isBomb === false) {
+                    item_array[n][m].$item.html(item_array[n][m].num);
+                    items-=1;
+                    item_array[n][m].$item.addClass("game-field__active-item");
+                    item_array[n][m].isOpen = true;
+                }
+            }
         }
-    } catch { }
-    try {
-        if(item_array[i+1][j+1].num === 0 && item_array[i+1][j+1].isOpen === false
-                                          && item_array[i+1][j+1].isBomb === false) { 
-            item_array[i+1][j+1].$item.click();
-        } else if(item_array[i+1][j+1].isOpen === false && item_array[i+1][j+1].isBomb === false) {
-            item_array[i+1][j+1].$item.html(item_array[i+1][j+1].num);
-            items-=1;
-            item_array[i+1][j+1].$item.addClass("game-field__active-item");
-            item_array[i+1][j+1].isOpen = true;
-        }
-    } catch { }
-    try {
-        if(item_array[i+1][j-1].num === 0 && item_array[i+1][j-1].isOpen === false
-                                          && item_array[i+1][j-1].isBomb === false) {
-            item_array[i+1][j-1].$item.click();
-        } else if (item_array[i+1][j-1].isOpen === false && item_array[i+1][j-1].isBomb === false) {
-            item_array[i+1][j-1].$item.html(item_array[i+1][j-1].num);
-            items-=1;
-            item_array[i+1][j-1].$item.addClass("game-field__active-item");
-            item_array[i+1][j-1].isOpen = true;
-        }
-    } catch { }
-    try {
-        if(item_array[i-1][j].num === 0 && item_array[i-1][j].isOpen === false
-                                        && item_array[i-1][j].isBomb === false) {
-            item_array[i-1][j].$item.click();
-        } else if (item_array[i-1][j].isOpen === false && item_array[i-1][j].isBomb === false){
-            item_array[i-1][j].$item.html(item_array[i-1][j].num);
-            items-=1;
-            item_array[i-1][j].$item.addClass("game-field__active-item");
-            item_array[i-1][j].isOpen = true;
-        }
-    } catch { }
-    try {
-        if(item_array[i-1][j+1].num === 0 && item_array[i-1][j+1].isOpen === false
-                                          && item_array[i-1][j+1].isBomb === false) {
-            item_array[i-1][j+1].$item.click();
-        } else if(item_array[i-1][j+1].isOpen === false && item_array[i-1][j+1].isBomb === false){
-            item_array[i-1][j+1].$item.html(item_array[i-1][j+1].num);
-            items-=1;
-            item_array[i-1][j+1].$item.addClass("game-field__active-item");
-            item_array[i-1][j+1].isOpen = true;
-        }
-    } catch { }
-    try {
-        if(item_array[i-1][j-1].num === 0 && item_array[i-1][j-1].isOpen === false
-                                          && item_array[i-1][j-1].isBomb === false) {
-            item_array[i-1][j-1].$item.click();
-        } else if(item_array[i-1][j-1].isOpen === false && item_array[i-1][j-1].isBomb === false) {
-            item_array[i-1][j-1].$item.html(item_array[i-1][j-1].num);
-            items-=1;
-            item_array[i-1][j-1].$item.addClass("game-field__active-item");
-            item_array[i-1][j-1].isOpen = true;
-        }
-    } catch { }
-    try {
-        if(item_array[i][j+1].num === 0 && item_array[i][j+1].isOpen === false
-                                        && item_array[i][j+1].isBomb === false) {
-            item_array[i][j+1].$item.click();
-        } else if(item_array[i][j+1].isOpen === false && item_array[i][j+1].isBomb === false) {
-            item_array[i][j+1].$item.html(item_array[i][j+1].num);
-            items-=1;
-            item_array[i][j+1].$item.addClass("game-field__active-item");
-            item_array[i][j+1].isOpen = true;
-        }
-    } catch { }
-    try {
-        if(item_array[i][j-1].num === 0 && item_array[i][j-1].isOpen === false
-                                        && item_array[i][j-1].isBomb === false) {
-            item_array[i][j-1].$item.click();
-        } else if (item_array[i][j-1].isOpen === false && item_array[i][j-1].isBomb === false){
-            item_array[i][j-1].$item.html(item_array[i][j-1].num);
-            items-=1;
-            item_array[i][j-1].$item.addClass("game-field__active-item");
-            item_array[i][j-1].isOpen = true;
-        }
-    } catch { }
+    }
+    catch {}
 }
