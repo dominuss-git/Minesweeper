@@ -20,24 +20,24 @@ $('#easy').click(function() {
     size = 5;
     items = 5*5;
     bomb = 4;
-    Start();
+    start();
 });
 
 $('#medium').click(function() {
     size = 16;
     items = 16*16;
     bomb = 64;
-    Start();
+    start();
 });
 
 $('#hard').click(function() {
     size = 25;
     items = 25*25;
     bomb = 400;
-    Start();
+    start();
 });
 
-const Start = function Start() {
+const start = () => {
     $('.game-field').empty();
     isGame = true;
     isGenerate = false;
@@ -45,11 +45,11 @@ const Start = function Start() {
     for(let i = 0; i < size; i+=1) { $('.game-field').append(row); }
     for(let i = 0; i < size; i+=1) { $('tr').append(item); }
 
-    Push();
+    push();
     setOnClickListener();
 }
 
-const Push = function Push() {
+const push = () => {
     item_array = [];
     $('.game-field').children().each(function(i) {
         item_array.push([]);
@@ -65,28 +65,28 @@ const Push = function Push() {
     });
 }
 
-const setOnClickListener = function setOnClickListener() {
+const setOnClickListener = () => {
     for(let i=0; i<size; i++) {
         for(let j=0; j<size; j++) {
             item_array[i][j].$item.click(function() {
                 if(isGenerate === false) {
                     isGenerate = true;
-                    Generate(bomb, i, j);
+                    generate(bomb, i, j);
                 }
                 if (item_array[i][j].isBomb === true && isGame === true 
                                                      && item_array[i][j].isFlag === false) {
                     $(this).addClass("game-field__bomb-item");
-                    StopGame(false);
+                    stopGame(false);
                 } else if(isGame === true && item_array[i][j].isFlag === false) {
                     $(this).html(item_array[i][j].num === 0 ? "" : item_array[i][j].num);
                     item_array[i][j].isOpen = true;
                     items-=1;
                     $(this).addClass("game-field__active-item");
                     if(item_array[i][j].num === 0) {
-                        Check(i, j);
+                        check(i, j);
                     }
                     if(items === bomb) {
-                        StopGame(true);
+                        stopGame(true);
                     }
                 } 
             })
@@ -105,7 +105,7 @@ const setOnClickListener = function setOnClickListener() {
     }
 }
 
-const Generate = function Generate(quantity, n ,m) {
+const generate = (quantity, n ,m) => {
     while(true) {
         for(let i=0; i<size; i++) {
             for(let j=0; j<size; j++) {
@@ -151,7 +151,7 @@ const Generate = function Generate(quantity, n ,m) {
     }
 }
 
-const StopGame = function StopGame(mode) {
+const stopGame = (mode) => {
     if(mode === true) {
         $(".body").append(`<div class="end-game shadow-box cyrcle">You won</div>`);
     } else {
@@ -172,7 +172,7 @@ const StopGame = function StopGame(mode) {
     isGame = false;
 }
 
-const Check = function Check(i, j) {
+const check = (i, j) => {
     try {
         if(item_array[i+1][j].num === 0 && item_array[i+1][j].isOpen === false
                                         && item_array[i+1][j].isBomb === false) {
